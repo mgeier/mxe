@@ -18,12 +18,13 @@ define $(PKG)_UPDATE
 endef
 
 define $(PKG)_BUILD
-    cd '$(1)' && ./configure \
+    cd '$(BUILD_DIR)' && '$(SOURCE_DIR)'/configure \
         $(MXE_CONFIGURE_OPTS) \
 	--enable-libsamplerate \
 	--enable-sndfile \
 	--enable-liboil \
 	--enable-liblo \
 	--enable-jack
-    $(MAKE) -C '$(1)' -j '$(JOBS)' install $(MXE_DISABLE_CRUFT)
+    $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' $(MXE_DISABLE_CRUFT)
+    $(MAKE) -C '$(BUILD_DIR)' -j 1 install $(MXE_DISABLE_CRUFT)
 endef
