@@ -1,0 +1,24 @@
+From 8e119777e0e333e53877ab68d0fd804394dd8a2c Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 16:18:28 +0100
+Subject: [PATCH] am__objects_1 error
+
+---
+ libecasound/Makefile.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libecasound/Makefile.in b/libecasound/Makefile.in
+index e1df1c7..8ae62a0 100644
+--- a/libecasound/Makefile.in
++++ b/libecasound/Makefile.in
+@@ -98,7 +98,6 @@ am__libecasound_la_SOURCES_DIST = \
+ 	midi-cc.cpp osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
+ 	linear-envelope.cpp two-stage-linear-envelope.cpp \
+ 	stamp-ctrl.cpp generic-linear-envelope.cpp
+-am__objects_1 = \
+ @ECA_AM_COMPILE_JACK_TRUE@am__objects_3 = jack-connections.lo
+ am__objects_4 = midi-server.lo midi-client.lo midi-parser.lo midiio.lo \
+ 	midiio-raw.lo midiio-aseq.lo
+-- 
+2.16.2
+

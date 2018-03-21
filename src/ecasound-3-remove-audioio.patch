@@ -1,0 +1,231 @@
+From e10a96f908a7cca940e7e62fd64f418464d4a1f1 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 16:00:29 +0100
+Subject: [PATCH] Remove audioio stuff
+
+---
+ libecasound/Makefile.in | 138 ++----------------------------------------------
+ 1 file changed, 4 insertions(+), 134 deletions(-)
+
+diff --git a/libecasound/Makefile.in b/libecasound/Makefile.in
+index 9e25b94..e1df1c7 100644
+--- a/libecasound/Makefile.in
++++ b/libecasound/Makefile.in
+@@ -71,17 +71,7 @@ am__DEPENDENCIES_1 =
+ @ECA_AM_DEBUG_MODE_TRUE@am__DEPENDENCIES_2 = $(top_builddir)/libecasound/plugins/libecasound_plugins_debug.la \
+ @ECA_AM_DEBUG_MODE_TRUE@	$(am__DEPENDENCIES_1)
+ libecasound_la_DEPENDENCIES = $(am__DEPENDENCIES_2)
+-am__libecasound_la_SOURCES_DIST = audioio-cdr.cpp audioio-ewf.cpp \
+-	audioio-mp3.cpp audioio-ogg.cpp audioio-wave.cpp audioio.cpp \
+-	audioio-buffered.cpp audioio-device.cpp audioio-null.cpp \
+-	audioio-raw.cpp audioio-mikmod.cpp audioio-rtnull.cpp \
+-	audioio-loop.cpp audioio-forked-stream.cpp \
+-	audioio-timidity.cpp audioio-db-server.cpp \
+-	audioio-db-buffer.cpp audioio-db-client.cpp \
+-	audioio-typeselect.cpp audioio-resample.cpp \
+-	audioio-reverse.cpp audioio-proxy.cpp audioio-flac.cpp \
+-	audioio-aac.cpp audioio-tone.cpp audioio-seqbase.cpp \
+-	audioio-acseq.cpp audioio-oss.cpp jack-connections.cpp \
++am__libecasound_la_SOURCES_DIST = \
+ 	midi-server.cpp midi-client.cpp midi-parser.cpp midiio.cpp \
+ 	midiio-raw.cpp midiio-aseq.cpp eca-chain.cpp eca-engine.cpp \
+ 	samplebuffer.cpp samplebuffer_functions.cpp eca-session.cpp \
+@@ -108,16 +98,7 @@ am__libecasound_la_SOURCES_DIST = audioio-cdr.cpp audioio-ewf.cpp \
+ 	midi-cc.cpp osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
+ 	linear-envelope.cpp two-stage-linear-envelope.cpp \
+ 	stamp-ctrl.cpp generic-linear-envelope.cpp
+-am__objects_1 = audioio-cdr.lo audioio-ewf.lo audioio-mp3.lo \
+-	audioio-ogg.lo audioio-wave.lo audioio.lo audioio-buffered.lo \
+-	audioio-device.lo audioio-null.lo audioio-raw.lo \
+-	audioio-mikmod.lo audioio-rtnull.lo audioio-loop.lo \
+-	audioio-forked-stream.lo audioio-timidity.lo \
+-	audioio-db-server.lo audioio-db-buffer.lo audioio-db-client.lo \
+-	audioio-typeselect.lo audioio-resample.lo audioio-reverse.lo \
+-	audioio-proxy.lo audioio-flac.lo audioio-aac.lo \
+-	audioio-tone.lo audioio-seqbase.lo audioio-acseq.lo
+-@ECA_AM_COMPILE_OSS_TRUE@am__objects_2 = audioio-oss.lo
++am__objects_1 = \
+ @ECA_AM_COMPILE_JACK_TRUE@am__objects_3 = jack-connections.lo
+ am__objects_4 = midi-server.lo midi-client.lo midi-parser.lo midiio.lo \
+ 	midiio-raw.lo midiio-aseq.lo
+@@ -155,17 +136,7 @@ libecasound_la_OBJECTS = $(am_libecasound_la_OBJECTS)
+ @ECA_AM_DEBUG_MODE_FALSE@am_libecasound_la_rpath = -rpath $(libdir)
+ am__DEPENDENCIES_3 = $(am__DEPENDENCIES_2)
+ libecasound_debug_la_DEPENDENCIES = $(am__DEPENDENCIES_3)
+-am__libecasound_debug_la_SOURCES_DIST = audioio-cdr.cpp \
+-	audioio-ewf.cpp audioio-mp3.cpp audioio-ogg.cpp \
+-	audioio-wave.cpp audioio.cpp audioio-buffered.cpp \
+-	audioio-device.cpp audioio-null.cpp audioio-raw.cpp \
+-	audioio-mikmod.cpp audioio-rtnull.cpp audioio-loop.cpp \
+-	audioio-forked-stream.cpp audioio-timidity.cpp \
+-	audioio-db-server.cpp audioio-db-buffer.cpp \
+-	audioio-db-client.cpp audioio-typeselect.cpp \
+-	audioio-resample.cpp audioio-reverse.cpp audioio-proxy.cpp \
+-	audioio-flac.cpp audioio-aac.cpp audioio-tone.cpp \
+-	audioio-seqbase.cpp audioio-acseq.cpp audioio-oss.cpp \
++am__libecasound_debug_la_SOURCES_DIST = \
+ 	jack-connections.cpp midi-server.cpp midi-client.cpp \
+ 	midi-parser.cpp midiio.cpp midiio-raw.cpp midiio-aseq.cpp \
+ 	eca-chain.cpp eca-engine.cpp samplebuffer.cpp \
+@@ -479,43 +450,6 @@ ecasound_preset_include = \
+ 			file-preset.h \
+ 			global-preset.h
+ 
+-ecasound_audioio_include = \
+-			audioio.h \
+-			audioio-buffered.h \
+-			audioio-device.h \
+-			audioio-plugin.h \
+-			audioio-manager.h \
+-			audioio-cdr.h \
+-			audioio-cdr_impl.h \
+-			audioio-ewf.h \
+-			audioio-mp3.h \
+-			audioio-mp3_impl.h \
+-			audioio-ogg.h \
+-			audioio-wave.h \
+-			audioio-raw.h \
+-			audioio-oss.h \
+-			audioio-oss_impl.h \
+-			audioio-null.h \
+-			audioio-rtnull.h \
+-			audioio-mikmod.h \
+-			audioio-loop.h \
+-			audioio-forked-stream.h \
+-			audioio-timidity.h \
+-			audioio-db-server.h \
+-			audioio-db-server_impl.h \
+-			audioio-db-buffer.h \
+-			audioio-db-client.h \
+-			audioio-proxy.h \
+-			audioio-typeselect.h \
+-			audioio-resample.h \
+-			audioio-reverse.h \
+-			audioio-flac.h \
+-			audioio-aac.h \
+-			audioio-tone.h \
+-			audioio-seqbase.h \
+-			audioio-acseq.h \
+-			audioio-barrier.h
+-
+ ecasound_midi_include = \
+ 			midi-server.h \
+ 			midi-client.h \
+@@ -597,8 +531,6 @@ ecasound_test_framework_include = \
+ 			eca-test-repository.h \
+ 			eca-test-case.h \
+ 			audiofx_amplitude_test.h \
+-			audioio_test.h \
+-			audioio-device_test.h \
+ 			eca-audio-time_test.h \
+ 			eca-chainsetup_test.h \
+ 			eca-chainsetup-parser_test.h \
+@@ -614,7 +546,6 @@ ecasound_test_framework_include = \
+ #       uninstall-data targets
+ noinst_HEADERS = $(ecasound_audiofx_include) \
+ 			$(ecasound_preset_include) \
+-			$(ecasound_audioio_include) \
+ 			$(ecasound_midi_include) \
+ 		 	$(ecasound_controller_include) \
+ 			$(ecasound_general_include) \
+@@ -646,36 +577,6 @@ ecasound_preset_src = global-preset.cpp \
+ 			preset.cpp \
+ 			file-preset.cpp
+ 
+-ecasound_audioio1_src = audioio-cdr.cpp \
+-			audioio-ewf.cpp \
+-			audioio-mp3.cpp \
+-			audioio-ogg.cpp \
+-			audioio-wave.cpp \
+-			audioio.cpp \
+-			audioio-buffered.cpp \
+-			audioio-device.cpp \
+-			audioio-null.cpp \
+-			audioio-raw.cpp \
+-			audioio-mikmod.cpp \
+-			audioio-rtnull.cpp \
+-			audioio-loop.cpp \
+-			audioio-forked-stream.cpp \
+-			audioio-timidity.cpp \
+-			audioio-db-server.cpp \
+-			audioio-db-buffer.cpp \
+-			audioio-db-client.cpp \
+-			audioio-typeselect.cpp \
+-			audioio-resample.cpp \
+-			audioio-reverse.cpp \
+-			audioio-proxy.cpp \
+-			audioio-flac.cpp \
+-			audioio-aac.cpp \
+-			audioio-tone.cpp \
+-			audioio-seqbase.cpp \
+-			audioio-acseq.cpp
+-
+-@ECA_AM_COMPILE_OSS_FALSE@ecasound_audioio2_src = 
+-@ECA_AM_COMPILE_OSS_TRUE@ecasound_audioio2_src = audioio-oss.cpp
+ @ECA_AM_COMPILE_JACK_FALSE@jack_connections_src = 
+ @ECA_AM_COMPILE_JACK_TRUE@jack_connections_src = jack-connections.cpp
+ ecasound_midi_src = \
+@@ -735,8 +636,7 @@ ecasound_general_src = eca-chain.cpp \
+ 			eca-object-map.cpp \
+ 			eca-preset-map.cpp
+ 
+-ecasound_common1_src = $(ecasound_audioio1_src) \
+-			$(ecasound_audioio2_src) \
++ecasound_common1_src = \
+ 			$(jack_connections_src) \
+ 			$(ecasound_midi_src) \
+ 			$(ecasound_general_src)
+@@ -859,34 +759,6 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audiofx_reverb.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audiofx_timebased.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audiogate.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-aac.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-acseq.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-buffered.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-cdr.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-db-buffer.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-db-client.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-db-server.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-device.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-ewf.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-flac.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-forked-stream.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-loop.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-mikmod.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-mp3.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-null.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-ogg.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-oss.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-proxy.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-raw.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-resample.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-reverse.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-rtnull.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-seqbase.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-timidity.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-tone.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-typeselect.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio-wave.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/audioio.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eca-audio-format.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eca-audio-position.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eca-audio-time.Plo@am__quote@
+@@ -1339,7 +1211,6 @@ install-data-local:
+ 	$(INSTALL_DATA) \
+ 		$(ecasound_audiofx_include) \
+ 		$(ecasound_preset_include) \
+-		$(ecasound_audioio_include) \
+ 		$(ecasound_controller_include) \
+ 		$(ecasound_midi_include) \
+ 		$(ecasound_general_include) \
+@@ -1353,7 +1224,6 @@ uninstall-local:
+ 	cd $(DESTDIR)$(includedir)/libecasound && \
+ 	rm -f   $(ecasound_audiofx_include) \
+ 		$(ecasound_preset_include) \
+-		$(ecasound_audioio_include) \
+ 		$(ecasound_controller_include) \
+ 		$(ecasound_midi_include) \
+ 		$(ecasound_general_include)
+-- 
+2.16.2
+

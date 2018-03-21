@@ -1,0 +1,149 @@
+From 5f278bf5ff5345bf928d33b8cc1edadd36510f65 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 16:21:43 +0100
+Subject: [PATCH] Remove MIDI stuff
+
+---
+ libecasound/Makefile.in | 42 +++++-------------------------------------
+ 1 file changed, 5 insertions(+), 37 deletions(-)
+
+diff --git a/libecasound/Makefile.in b/libecasound/Makefile.in
+index 8ae62a0..9aedce3 100644
+--- a/libecasound/Makefile.in
++++ b/libecasound/Makefile.in
+@@ -72,8 +72,7 @@ am__DEPENDENCIES_1 =
+ @ECA_AM_DEBUG_MODE_TRUE@	$(am__DEPENDENCIES_1)
+ libecasound_la_DEPENDENCIES = $(am__DEPENDENCIES_2)
+ am__libecasound_la_SOURCES_DIST = \
+-	midi-server.cpp midi-client.cpp midi-parser.cpp midiio.cpp \
+-	midiio-raw.cpp midiio-aseq.cpp eca-chain.cpp eca-engine.cpp \
++	eca-chain.cpp eca-engine.cpp \
+ 	samplebuffer.cpp samplebuffer_functions.cpp eca-session.cpp \
+ 	eca-resources.cpp resource-file.cpp eca-logger.cpp \
+ 	eca-logger-default.cpp eca-logger-interface.cpp \
+@@ -95,12 +94,10 @@ am__libecasound_la_SOURCES_DIST = \
+ 	audiofx_timebased.cpp audiogate.cpp audiofx_mixing.cpp \
+ 	audiofx_ladspa.cpp audiofx_lv2.cpp audiofx_lv2_world.cpp \
+ 	audio-stamp.cpp global-preset.cpp preset.cpp file-preset.cpp \
+-	midi-cc.cpp osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
++	osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
+ 	linear-envelope.cpp two-stage-linear-envelope.cpp \
+ 	stamp-ctrl.cpp generic-linear-envelope.cpp
+ @ECA_AM_COMPILE_JACK_TRUE@am__objects_3 = jack-connections.lo
+-am__objects_4 = midi-server.lo midi-client.lo midi-parser.lo midiio.lo \
+-	midiio-raw.lo midiio-aseq.lo
+ am__objects_5 = eca-chain.lo eca-engine.lo samplebuffer.lo \
+ 	samplebuffer_functions.lo eca-session.lo eca-resources.lo \
+ 	resource-file.lo eca-logger.lo eca-logger-default.lo \
+@@ -124,7 +121,7 @@ am__objects_7 = audiofx.lo audiofx_misc.lo audiofx_amplitude.lo \
+ 	audiogate.lo audiofx_mixing.lo audiofx_ladspa.lo \
+ 	audiofx_lv2.lo audiofx_lv2_world.lo audio-stamp.lo
+ am__objects_8 = global-preset.lo preset.lo file-preset.lo
+-am__objects_9 = midi-cc.lo osc-gen.lo osc-gen-file.lo osc-sine.lo \
++am__objects_9 = osc-gen.lo osc-gen-file.lo osc-sine.lo \
+ 	linear-envelope.lo two-stage-linear-envelope.lo stamp-ctrl.lo \
+ 	generic-linear-envelope.lo
+ @ECA_AM_DISABLE_EFFECTS_FALSE@am__objects_10 = $(am__objects_7) \
+@@ -136,8 +133,7 @@ libecasound_la_OBJECTS = $(am_libecasound_la_OBJECTS)
+ am__DEPENDENCIES_3 = $(am__DEPENDENCIES_2)
+ libecasound_debug_la_DEPENDENCIES = $(am__DEPENDENCIES_3)
+ am__libecasound_debug_la_SOURCES_DIST = \
+-	jack-connections.cpp midi-server.cpp midi-client.cpp \
+-	midi-parser.cpp midiio.cpp midiio-raw.cpp midiio-aseq.cpp \
++	jack-connections.cpp \
+ 	eca-chain.cpp eca-engine.cpp samplebuffer.cpp \
+ 	samplebuffer_functions.cpp eca-session.cpp eca-resources.cpp \
+ 	resource-file.cpp eca-logger.cpp eca-logger-default.cpp \
+@@ -159,7 +155,7 @@ am__libecasound_debug_la_SOURCES_DIST = \
+ 	audiofx_timebased.cpp audiogate.cpp audiofx_mixing.cpp \
+ 	audiofx_ladspa.cpp audiofx_lv2.cpp audiofx_lv2_world.cpp \
+ 	audio-stamp.cpp global-preset.cpp preset.cpp file-preset.cpp \
+-	midi-cc.cpp osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
++	osc-gen.cpp osc-gen-file.cpp osc-sine.cpp \
+ 	linear-envelope.cpp two-stage-linear-envelope.cpp \
+ 	stamp-ctrl.cpp generic-linear-envelope.cpp
+ am_libecasound_debug_la_OBJECTS = $(am__objects_6) $(am__objects_10)
+@@ -449,17 +445,8 @@ ecasound_preset_include = \
+ 			file-preset.h \
+ 			global-preset.h
+ 
+-ecasound_midi_include = \
+-			midi-server.h \
+-			midi-client.h \
+-			midi-parser.h \
+-			midiio.h \
+-			midiio-raw.h \
+-			midiio-aseq.h
+-
+ ecasound_controller_include = \
+ 			ctrl-source.h \
+-			midi-cc.h \
+ 			oscillator.h \
+ 			osc-gen.h \
+ 			osc-gen-file.h \
+@@ -545,7 +532,6 @@ ecasound_test_framework_include = \
+ #       uninstall-data targets
+ noinst_HEADERS = $(ecasound_audiofx_include) \
+ 			$(ecasound_preset_include) \
+-			$(ecasound_midi_include) \
+ 		 	$(ecasound_controller_include) \
+ 			$(ecasound_general_include) \
+ 			$(ecasound_extra_include) \
+@@ -578,16 +564,8 @@ ecasound_preset_src = global-preset.cpp \
+ 
+ @ECA_AM_COMPILE_JACK_FALSE@jack_connections_src = 
+ @ECA_AM_COMPILE_JACK_TRUE@jack_connections_src = jack-connections.cpp
+-ecasound_midi_src = \
+-			midi-server.cpp \
+-			midi-client.cpp \
+-			midi-parser.cpp \
+-			midiio.cpp \
+-			midiio-raw.cpp \
+-			midiio-aseq.cpp
+ 
+ ecasound_controller_src = \
+-			midi-cc.cpp \
+ 			osc-gen.cpp \
+ 			osc-gen-file.cpp \
+ 			osc-sine.cpp \
+@@ -637,7 +615,6 @@ ecasound_general_src = eca-chain.cpp \
+ 
+ ecasound_common1_src = \
+ 			$(jack_connections_src) \
+-			$(ecasound_midi_src) \
+ 			$(ecasound_general_src)
+ 
+ @ECA_AM_DISABLE_EFFECTS_FALSE@ecasound_common2_src = $(ecasound_audiofx_src) \
+@@ -800,13 +777,6 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/layer.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libecasound_tester.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/linear-envelope.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midi-cc.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midi-client.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midi-parser.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midi-server.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midiio-aseq.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midiio-raw.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/midiio.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osc-gen-file.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osc-gen.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osc-sine.Plo@am__quote@
+@@ -1211,7 +1181,6 @@ install-data-local:
+ 		$(ecasound_audiofx_include) \
+ 		$(ecasound_preset_include) \
+ 		$(ecasound_controller_include) \
+-		$(ecasound_midi_include) \
+ 		$(ecasound_general_include) \
+ 		$(DESTDIR)$(includedir)/libecasound
+ 	$(INSTALL) -d $(DESTDIR)$(bindir)
+@@ -1224,7 +1193,6 @@ uninstall-local:
+ 	rm -f   $(ecasound_audiofx_include) \
+ 		$(ecasound_preset_include) \
+ 		$(ecasound_controller_include) \
+-		$(ecasound_midi_include) \
+ 		$(ecasound_general_include)
+ 	rmdir $(DESTDIR)$(includedir)/libecasound || echo "Skipping"
+ 	rm -f 	$(DESTDIR)$(bindir)/libecasound-config
+-- 
+2.16.2
+

@@ -1,0 +1,25 @@
+From 92560787c9b4b5f0aab772a4a4bfa8673fa55cee Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 16:26:25 +0100
+Subject: [PATCH] long long
+
+---
+ libecasound/eca-chain.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libecasound/eca-chain.cpp b/libecasound/eca-chain.cpp
+index 11b1f66..80786eb 100644
+--- a/libecasound/eca-chain.cpp
++++ b/libecasound/eca-chain.cpp
+@@ -796,7 +796,7 @@ void CHAIN::init(SAMPLE_BUFFER* sbuf, int in_channels, int out_channels)
+ 	      " chainops and " +
+ 	      kvu_numtostr(gcontrollers_rep.size()) +
+ 	      " gcontrollers. Sbuf points to " +
+-	      kvu_numtostr(reinterpret_cast<long int>(audioslot_repp)) + ".");
++	      kvu_numtostr(reinterpret_cast<long long>(audioslot_repp)) + ".");
+   
+   // --------
+   DBC_ENSURE(is_initialized() == true);
+-- 
+2.16.2
+

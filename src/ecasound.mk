@@ -30,6 +30,6 @@ define $(PKG)_BUILD
         --disable-rubyecasound \
         --disable-audiofile \
         --disable-ncurses
-    $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' $(MXE_DISABLE_CRUFT)
+    $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' $(MXE_DISABLE_CRUFT) CXXFLAGS=-Wno-deprecated-declarations
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install $(MXE_DISABLE_CRUFT)
 endef

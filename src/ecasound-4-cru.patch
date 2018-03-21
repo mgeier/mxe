@@ -1,0 +1,25 @@
+From 2ff9b5fcb805d700810d052a0547d446a688f549 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 16:11:46 +0100
+Subject: [PATCH] cru -> cr
+
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index cfe0ede..a5ed7da 100755
+--- a/configure
++++ b/configure
+@@ -7761,7 +7761,7 @@ else
+ fi
+ 
+ test -z "$AR" && AR=ar
+-test -z "$AR_FLAGS" && AR_FLAGS=cru
++test -z "$AR_FLAGS" && AR_FLAGS=cr
+ 
+ 
+ 
+-- 
+2.16.2
+
