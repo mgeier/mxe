@@ -1,0 +1,49 @@
+From 3e3f2742eaf63cd6a44966d0ccb69e97b7e8a8b3 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Wed, 21 Mar 2018 15:48:29 +0100
+Subject: [PATCH] Try to remove kvu_temporary_...
+
+---
+ kvutils/Makefile.in | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/kvutils/Makefile.in b/kvutils/Makefile.in
+index 965456b..75c6282 100644
+--- a/kvutils/Makefile.in
++++ b/kvutils/Makefile.in
+@@ -68,7 +68,7 @@ libkvutils_la_LIBADD =
+ am__objects_1 = kvu_dbc.lo kvu_debug.lo kvu_com_line.lo \
+ 	kvu_locks.lo kvu_message_item.lo kvu_numtostr.lo \
+ 	kvu_procedure_timer.lo kvu_rtcaps.lo \
+-	kvu_temporary_file_directory.lo kvu_threads.lo kvu_utils.lo \
++	kvu_threads.lo kvu_utils.lo \
+ 	kvu_timestamp.lo kvu_value_queue.lo
+ am__objects_2 =
+ am_libkvutils_la_OBJECTS = $(am__objects_1) $(am__objects_2)
+@@ -310,7 +310,6 @@ kvutil_sources = kvu_dbc.cpp \
+ 			kvu_numtostr.cpp \
+ 			kvu_procedure_timer.cpp \
+ 			kvu_rtcaps.cpp \
+-			kvu_temporary_file_directory.cpp \
+ 			kvu_threads.cpp \
+ 			kvu_utils.cpp \
+ 			kvu_timestamp.cpp \
+@@ -328,7 +327,6 @@ kvutil_headers = kvu_dbc.h \
+ 			kvu_object_queue.h \
+ 			kvu_procedure_timer.h \
+ 			kvu_rtcaps.h \
+-			kvu_temporary_file_directory.h \
+ 			kvu_threads.h \
+ 			kvu_utils.h \
+ 			kvu_timestamp.h \
+@@ -431,7 +429,6 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_numtostr.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_procedure_timer.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_rtcaps.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_temporary_file_directory.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_threads.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_timestamp.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kvu_utils.Plo@am__quote@
+-- 
+2.16.2
+
