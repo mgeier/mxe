@@ -24,7 +24,8 @@ define $(PKG)_BUILD
 	--enable-sndfile \
 	--enable-liboil \
 	--enable-liblo \
-	--enable-jack
+	--enable-jack \
+	LIBS=-lws2_32
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' $(MXE_DISABLE_CRUFT)
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install $(MXE_DISABLE_CRUFT)
 endef
