@@ -3,8 +3,8 @@
 PKG             := ecasound
 $(PKG)_WEBSITE  := https://ecasound.seul.org/
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 2.9.1
-$(PKG)_CHECKSUM := 39fce8becd84d80620fa3de31fb5223b2b7d4648d36c9c337d3739c2fad0dcf3
+$(PKG)_VERSION  := 2.9.3
+$(PKG)_CHECKSUM := 468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f6d4
 $(PKG)_SUBDIR   := ecasound-$($(PKG)_VERSION)
 $(PKG)_FILE     := ecasound-$($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := https://ecasound.seul.org/download/$($(PKG)_FILE)
