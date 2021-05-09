@@ -8,7 +8,7 @@ $(PKG)_CHECKSUM := 468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f
 $(PKG)_SUBDIR   := ecasound-$($(PKG)_VERSION)
 $(PKG)_FILE     := ecasound-$($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := https://ecasound.seul.org/download/$($(PKG)_FILE)
-$(PKG)_DEPS     := cc libsamplerate libsndfile liboil jack
+$(PKG)_DEPS     := cc dlfcn-win32 libsamplerate libsndfile liboil jack
 
 define $(PKG)_UPDATE
     $(WGET) -q -O- 'https://ecasound.seul.org/download/' | \
