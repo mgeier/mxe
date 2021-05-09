@@ -20,12 +20,12 @@ endef
 define $(PKG)_BUILD
     cd '$(BUILD_DIR)' && '$(SOURCE_DIR)'/configure \
         $(MXE_CONFIGURE_OPTS) \
-	--enable-libsamplerate \
-	--enable-sndfile \
-	--enable-liboil \
-	--enable-liblo \
-	--enable-jack \
-	LIBS="-lws2_32 -ldl"
+				--enable-libsamplerate \
+				--enable-sndfile \
+				--enable-liboil \
+				--enable-liblo \
+				--enable-jack \
+				LIBS="-lws2_32 -ldl"
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' $(MXE_DISABLE_CRUFT)
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install $(MXE_DISABLE_CRUFT)
 endef
