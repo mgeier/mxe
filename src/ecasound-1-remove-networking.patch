@@ -1,0 +1,83 @@
+This file is part of MXE. See LICENSE.md for licensing information.
+
+Contains ad hoc patches for cross building.
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Sun, 9 May 2021 11:51:09 +0200
+Subject: [PATCH 1/4] don't check poll.h
+
+
+diff --git a/configure.ac b/configure.ac
+index 1111111..2222222 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1211,7 +1211,7 @@ dnl Checks for system header files.
+ dnl ---
+ AC_HEADER_TIME
+ dnl Note! Header filenames must be on the same line!
+-AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/poll.h sys/stat.h sys/socket.h sys/time.h sys/types.h sys/wait.h sys/select.h,,
++AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/socket.h sys/time.h sys/types.h sys/wait.h sys/select.h,,
+ 		 AC_MSG_ERROR([*** not all required header files were found ***]))
+ AC_CHECK_HEADERS(execinfo.h features.h inttypes.h locale.h ladspa.h sched.h stdint.h sys/mman.h termios.h)
+ 
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Sun, 9 May 2021 11:53:13 +0200
+Subject: [PATCH 2/4] don't check socket.h
+
+
+diff --git a/configure.ac b/configure.ac
+index 1111111..2222222 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1211,7 +1211,7 @@ dnl Checks for system header files.
+ dnl ---
+ AC_HEADER_TIME
+ dnl Note! Header filenames must be on the same line!
+-AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/socket.h sys/time.h sys/types.h sys/wait.h sys/select.h,,
++AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/time.h sys/types.h sys/wait.h sys/select.h,,
+ 		 AC_MSG_ERROR([*** not all required header files were found ***]))
+ AC_CHECK_HEADERS(execinfo.h features.h inttypes.h locale.h ladspa.h sched.h stdint.h sys/mman.h termios.h)
+ 
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Sun, 9 May 2021 11:54:48 +0200
+Subject: [PATCH 3/4] don't check sys/wait.h
+
+
+diff --git a/configure.ac b/configure.ac
+index 1111111..2222222 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1211,7 +1211,7 @@ dnl Checks for system header files.
+ dnl ---
+ AC_HEADER_TIME
+ dnl Note! Header filenames must be on the same line!
+-AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/time.h sys/types.h sys/wait.h sys/select.h,,
++AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/time.h sys/types.h sys/select.h,,
+ 		 AC_MSG_ERROR([*** not all required header files were found ***]))
+ AC_CHECK_HEADERS(execinfo.h features.h inttypes.h locale.h ladspa.h sched.h stdint.h sys/mman.h termios.h)
+ 
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matthias Geier <Matthias.Geier@gmail.com>
+Date: Sun, 9 May 2021 11:55:33 +0200
+Subject: [PATCH 4/4] select.h
+
+
+diff --git a/configure.ac b/configure.ac
+index 1111111..2222222 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1211,7 +1211,7 @@ dnl Checks for system header files.
+ dnl ---
+ AC_HEADER_TIME
+ dnl Note! Header filenames must be on the same line!
+-AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/time.h sys/types.h sys/select.h,,
++AC_CHECK_HEADERS(dlfcn.h errno.h fcntl.h regex.h signal.h unistd.h sys/stat.h sys/time.h sys/types.h,,
+ 		 AC_MSG_ERROR([*** not all required header files were found ***]))
+ AC_CHECK_HEADERS(execinfo.h features.h inttypes.h locale.h ladspa.h sched.h stdint.h sys/mman.h termios.h)
+ 
